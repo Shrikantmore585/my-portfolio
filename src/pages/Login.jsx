@@ -11,52 +11,52 @@ import { login } from '../redux/userSlice';
 import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
-  // const [email, setEmail] = useState('');
-  // const [password, setPassword] = useState('');
-  // const [error, setError] = useState(null);
-  // const dispatch = useDispatch();
-  // const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState(null);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  // const pushUserAndNavigate = (user) => {
-  //   dispatch(login({
-  //     email: user.email,
-  //     uid: user.uid,
-  //     displayName: user.displayName,
-  //   }));
-  //   navigate('/manage-shoutouts');
-  // };
+  const pushUserAndNavigate = (user) => {
+    dispatch(login({
+      email: user.email,
+      uid: user.uid,
+      displayName: user.displayName,
+    }));
+    navigate('/manage-shoutouts');
+  };
 
-  // const handleGoogleSignIn = () => {
-  //   setError(null);
-  //   const provider = new GoogleAuthProvider();
-  //   signInWithPopup(auth, provider)
-  //     .then((result) => pushUserAndNavigate(result.user))
-  //     .catch((error) => setError(error.message));
-  // };
+  const handleGoogleSignIn = () => {
+    setError(null);
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider)
+      .then((result) => pushUserAndNavigate(result.user))
+      .catch((error) => setError(error.message));
+  };
 
-  // const handleEmailSignUp = (e) => {
-  //   e.preventDefault();
-  //   setError(null);
-  //   if (!email || !password) {
-  //     setError('Email and password cannot be empty.');
-  //     return;
-  //   }
-  //   createUserWithEmailAndPassword(auth, email, password)
-  //     .then((userCredential) => pushUserAndNavigate(userCredential.user))
-  //     .catch((error) => setError(error.message));
-  // };
+  const handleEmailSignUp = (e) => {
+    e.preventDefault();
+    setError(null);
+    if (!email || !password) {
+      setError('Email and password cannot be empty.');
+      return;
+    }
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => pushUserAndNavigate(userCredential.user))
+      .catch((error) => setError(error.message));
+  };
 
-  // const handleEmailSignIn = (e) => {
-  //   e.preventDefault();
-  //   setError(null);
-  //   if (!email || !password) {
-  //     setError('Email and password cannot be empty.');
-  //     return;
-  //   }
-  //   signInWithEmailAndPassword(auth, email, password)
-  //     .then((userCredential) => pushUserAndNavigate(userCredential.user))
-  //     .catch((error) => setError(error.message));
-  // };
+  const handleEmailSignIn = (e) => {
+    e.preventDefault();
+    setError(null);
+    if (!email || !password) {
+      setError('Email and password cannot be empty.');
+      return;
+    }
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => pushUserAndNavigate(userCredential.user))
+      .catch((error) => setError(error.message));
+  };
 
   return (
     <div className="container py-5 fade-in" style={{ maxWidth: '400px' }}>

@@ -4,25 +4,25 @@ import { doc, setDoc } from 'firebase/firestore';
 import { v4 as uuidv4 } from 'uuid';
 
 export default function GiveShoutout() {
-  // const [name, setName] = useState('');
-  // const [feedback, setFeedback] = useState('');
-  // const [status, setStatus] = useState(null);
+  const [name, setName] = useState('');
+  const [feedback, setFeedback] = useState('');
+  const [status, setStatus] = useState(null);
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   if (!name || !feedback) return;
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!name || !feedback) return;
 
-  //   try {
-  //     const newId = uuidv4();
-  //     await setDoc(doc(db, "shoutouts", newId), { name, feedback });
-  //     setStatus({ type: 'success', message: 'Shoutout added successfully!' });
-  //     setName('');
-  //     setFeedback('');
-  //   } catch (error) {
-  //     console.error("Error adding shoutout:", error);
-  //     setStatus({ type: 'error', message: 'Failed to add shoutout. Please try again.' });
-  //   }
-  // };
+    try {
+      const newId = uuidv4();
+      await setDoc(doc(db, "shoutouts", newId), { name, feedback });
+      setStatus({ type: 'success', message: 'Shoutout added successfully!' });
+      setName('');
+      setFeedback('');
+    } catch (error) {
+      console.error("Error adding shoutout:", error);
+      setStatus({ type: 'error', message: 'Failed to add shoutout. Please try again.' });
+    }
+  };
 
   return (
     <div className="container py-5 fade-in" style={{ maxWidth: '600px' }}>

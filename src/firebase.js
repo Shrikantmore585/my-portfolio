@@ -5,7 +5,13 @@ import { getDatabase } from "firebase/database";
 
 // TODO: Replace with your web app's Firebase configuration
 const firebaseConfig = {
-
+apiKey: "AIzaSyB9VwolLLDBc-WHXb7tizpYXR3eTg8TQJY",
+  authDomain: "my-portfolio-228d0.firebaseapp.com",
+  databaseURL: "https://my-portfolio-228d0-default-rtdb.firebaseio.com",
+  projectId: "my-portfolio-228d0",
+  storageBucket: "my-portfolio-228d0.firebasestorage.app",
+  messagingSenderId: "287076355538",
+  appId: "1:287076355538:web:fe6588419507c0c5e54c0b"
 };
 
 // Initialize Firebase

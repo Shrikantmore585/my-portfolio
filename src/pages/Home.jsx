@@ -18,48 +18,48 @@ export default function Home() {
   const [dynamicExperience, setDynamicExperience] = useState(experienceData);
   const [shoutouts, setShoutouts] = useState([]);
 
-  // useEffect(() => {
-  //   const userRef = ref(realtimeDB, 'user/');
-  //   get(userRef)
-  //     .then((snapshot) => {
-  //       if (snapshot.exists()) {
-  //         const data = snapshot.val();
-  //         console.log(data)
-  //         if (data.name) setDynamicName(data.name);
-  //         if (data.email) setDynamicEmail(data.email);
-  //       }
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error fetching user data:", error);
-  //     });
-  // }, []);
+  useEffect(() => {
+    const userRef = ref(realtimeDB, 'user/');
+    get(userRef)
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          const data = snapshot.val();
+          console.log(data)
+          if (data.name) setDynamicName(data.name);
+          if (data.email) setDynamicEmail(data.email);
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching user data:", error);
+      });
+  }, []);
 
-  // useEffect(() => {
-  //   const fetchExperience = async () => {
-  //     try {
-  //       const querySnapshot = await getDocs(collection(db, "experience"));
-  //       const expList = querySnapshot.docs.map(doc => {
-  //         const data = doc.data();
-  //         return {
-  //           companyName: data.company,
-  //           roles: [
-  //             {
-  //               title: data.designation,
-  //               duration: data.duration || ""
-  //             }
-  //           ]
-  //         };
-  //       });
-  //       if (expList.length > 0) {
-  //         setDynamicExperience(expList);
-  //       }
-  //     } catch (error) {
-  //       console.error("Error fetching experience data:", error);
-  //     }
-  //   };
+  useEffect(() => {
+    const fetchExperience = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, "experience"));
+        const expList = querySnapshot.docs.map(doc => {
+          const data = doc.data();
+          return {
+            companyName: data.company,
+            roles: [
+              {
+                title: data.designation,
+                duration: data.duration || ""
+              }
+            ]
+          };
+        });
+        if (expList.length > 0) {
+          setDynamicExperience(expList);
+        }
+      } catch (error) {
+        console.error("Error fetching experience data:", error);
+      }
+    };
 
-  //   fetchExperience();
-  // }, []);
+    fetchExperience();
+  }, []);
 
   useEffect(() => {
     const fetchShoutouts = async () => {
